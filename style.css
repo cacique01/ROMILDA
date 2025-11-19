@@ -1,0 +1,459 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+ul {
+    list-style: none;
+}
+
+/* CORES CHAVE */
+:root {
+    --primary-color: #7b4397;
+    /* Púrpura/Roxo (Elegância) */
+    --secondary-color: #fc77a6;
+    /* Rosa */
+    --text-dark: #333;
+    --text-light: #fff;
+    --bg-light: #f8f8f8;
+    --card-bg: #fff;
+}
+
+/* HEADER RESPONSIVO */
+.main-header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo a {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Navegação Mobile (Menu Hamburguer) */
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: block;
+    /* Visível por padrão no mobile */
+}
+
+.vera{
+    
+}
+
+.nav-links {
+    display: none;
+    /* Oculto por padrão no mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.nav-links.active {
+    display: flex;
+    /* Visível quando a classe 'active' é adicionada via JS */
+}
+
+.nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-dark);
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: var(--bg-light);
+}
+
+.header-icons a {
+    margin-left: 15px;
+    color: var(--text-dark);
+    font-size: 1.2em;
+}
+
+/* CARROSSEL HERO SECTION */
+.hero-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    /* Altura padrão para mobile */
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.carousel-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    /* Cada slide ocupa 100% da largura do contêiner */
+    height: 100%;
+    background-size: auto;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+}
+
+/* Overlay sutil para garantir que o texto seja legível na imagem */
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Escurece a imagem de fundo */
+}
+
+.hero-content {
+    position: relative;
+    /* Para ficar acima do overlay */
+    z-index: 1;
+    padding: 20px;
+    max-width: 80%;
+    /* Limita a largura do texto */
+}
+
+.hero-content h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e85885;
+}
+
+/* Controles do Carrossel (Setas) */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    z-index: 2;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* Indicadores do Carrossel (Dots) */
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: var(--text-light);
+    transform: scale(1.2);
+}
+
+
+/* SEÇÃO DE PRODUTOS */
+.product-showcase {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-showcase h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+/* GRID DE PRODUTOS (MOBILE-FIRST) */
+.product-grid {
+    display: grid;
+    /* Uma coluna por padrão em telas pequenas */
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.product-brand {
+    font-size: 0.8em;
+    color: #999;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    height: 2.2em;
+    /* Altura fixa para nomes de duas linhas */
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+.price-sale {
+    color: #d9534f;
+    /* Cor de destaque para preço em promoção */
+}
+
+.btn-card {
+    display: block;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+}
+
+.btn-card:hover {
+    background-color: #5e3272;
+}
+
+
+/* RODAPÉ RESPONSIVO */
+.main-footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 40px 20px 20px;
+    margin-top: 30px;
+}
+
+.footer-grid {
+    display: grid;
+    /* Uma coluna no mobile */
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-col h3 {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+}
+
+.footer-col li {
+    margin-bottom: 8px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.footer-col a {
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--text-light);
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8em;
+    color: #ccc;
+}
+
+
+/* --- MEDIA QUERIES (Responsividade de Fato) --- */
+
+/* Tablet (Telas maiores que 600px) */
+@media (min-width: 600px) {
+
+    /* Grid de Produtos: 2 colunas */
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Rodapé: 3 colunas */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Carrossel: Altura maior */
+    .hero-carousel-container {
+        height: 400px;
+    }
+}
+
+/* Desktop (Telas maiores que 1024px) */
+@media (min-width: 1024px) {
+
+    /* Navegação Desktop (esconde o hamburguer) */
+    .menu-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        flex-grow: 1;
+        /* Ocupa espaço central */
+        margin-left: 50px;
+    }
+
+    .nav-links {
+        display: flex;
+        /* Mostra o menu na horizontal */
+        flex-direction: row;
+        position: static;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    .nav-links li a {
+        padding: 10px 15px;
+    }
+
+    /* Header (alinha os ícones mais para a direita) */
+    .header-icons {
+        margin-left: auto;
+    }
+
+    /* Carrossel: Altura ainda maior */
+    .hero-carousel-container {
+        height: 500px;
+    }
+
+    .hero-content h2 {
+        font-size: 3em;
+    }
+
+    /* Grid de Produtos: 4 colunas */
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
